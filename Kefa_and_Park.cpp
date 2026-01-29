@@ -8,7 +8,7 @@ int dfs(int st,vector<vector<int>> &adj,vector<bool> &visited,int n,int m,vector
     else{
         con_cat=0;
     }
-    bool isleaf=1;
+
     if(con_cat>m) return 0;
     for(auto &neigh:adj[st]){
         if(!visited[neigh]){
@@ -16,7 +16,7 @@ int dfs(int st,vector<vector<int>> &adj,vector<bool> &visited,int n,int m,vector
             dfs(neigh,adj,visited,n,m,isCat,con_cat,count);
         }
     }
-    if(isleaf) count++;
+    if(st!=-1 && adj[st].size()==1) count++;
     return 0;
 }
 int main(){
@@ -30,7 +30,7 @@ int main(){
     for(int i=1;i<=n;i++){
         cin>>isCat[i];
     }
-    for(int i=0;i<=n-1;i++){
+    for(int i=0;i<n-1;i++){
         int u;
         int v;
         cin>>u>>v;
@@ -40,5 +40,6 @@ int main(){
     dfs(1,adj,visited,n,m,isCat,0,count);
     cout<<count;
     return 0;
+
 
 }
