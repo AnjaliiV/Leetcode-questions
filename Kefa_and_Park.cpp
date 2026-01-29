@@ -12,7 +12,6 @@ int dfs(int st,vector<vector<int>> &adj,vector<bool> &visited,int n,int m,vector
     if(con_cat>m) return 0;
     for(auto &neigh:adj[st]){
         if(!visited[neigh]){
-            isleaf=false;
             dfs(neigh,adj,visited,n,m,isCat,con_cat,count);
         }
     }
@@ -43,3 +42,4 @@ int main(){
 
 
 }
+
